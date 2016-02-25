@@ -1,0 +1,49 @@
+<div class="timeline-wrapper">
+	<div class="" id="user-background">
+	</div>
+	<div class="user-info" set-class-when-at-top="fix-to-top">
+		<div class="container-fluid">
+			<div class="row">
+			  <div class="col-xs-5 col-md-4">
+			  	<div id="user-avatar-wrapper-large">
+			  		<img src="{{ user.profile_picture_url }}" id="user-avatar">
+			  	</div>
+			  	<div id="user-avatar-wrapper-small" style="">
+			  		<img src="{{ user.profile_picture_url }}" id="user-avatar">
+			  		<p>{{ user.username }}</p>
+			  	</div>
+			  </div>
+			  <div class="col-xs-7 col-md-8" id="journal-date">
+				  	<div id="date-picker-wrapper">
+					    <pre ng-click="showDatePicker = !showDatePicker" id="current-date"><em>{{dt | date:"MM/dd/yyyy" }}</em></pre>
+					</div>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid" id="journal-content" >
+		<div infinite-scroll='loadMore()' infinite-scroll-distance='1'>
+			<div class=""  ng-if="timelineDays.length > 0" ng-repeat='day in timelineDays'>
+				<div class="day-info-wrapper">
+					<p class="timeline-day-separator"> {{ day.public_date }} </p>
+				</div>
+			 	<div class="post"  ng-repeat='post in day.posts'>
+				 		<p class="posted-time">{{ post.timestamp }}</p>
+						<p class="post-note" ng-if="post.type == 'note'">{{ post.text }}</p>
+						<img class="post-image" ng-if="post.type == 'image'" src="{{ post.image_url }}">
+						<video class="post-video" ng-if="post.type == 'video'" width="90%" controls>
+						  <source src="{{ post.video_url }}" type="video/mp4">
+						  <source src="{{ post.video_url }}" type="video/ogg">
+						  <source src="{{ post.video_url }}" type="video/quicktime">
+							Your browser does not support the video tag.
+						</video>
+						<a ng-if="post.type == 'link'" href="{{ post.url }}" id="{{ post.type }}" class="embedly-card" data-card-controls="0" ></a>
+						<img class="divider" src="/images/divider.png" height="2px">
+				</div>
+			</div>
+			<div class="post" ng-if="timelineDays.length == 0" >
+				<h1>No Posts Yet <img height="50px" src="/images/sad_emoji.jpg"></h1>
+			</div>
+	    </div>
+	</div>
+</div>
