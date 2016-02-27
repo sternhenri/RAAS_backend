@@ -33,7 +33,7 @@ Rails.application.configure do
   #to run on Mac
   #Paperclip.options[:command_path] = "/usr/local/bin/"
    #to run on Ubuntu
-  Paperclip.options[:command_path] = "/usr/bin/convert" 
+  # Paperclip.options[:command_path] = "/usr/bin/convert" 
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

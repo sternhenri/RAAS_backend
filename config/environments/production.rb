@@ -24,7 +24,7 @@ Rails.application.configure do
   #to run on Mac
   #Paperclip.options[:command_path] = "/usr/local/bin/"
   #to run on Ubuntu
-  Paperclip.options[:command_path] = "/usr/bin/"
+  # Paperclip.options[:command_path] = "/usr/bin/"
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
